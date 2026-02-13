@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedIntel AI - AI-Powered Health Intelligence Platform</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Theme Transition Overlay -->
+    <div class="theme-transition"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="18" class="logo-circle"/>
+                        <path d="M20 10V30M10 20H30" class="logo-cross" stroke-linecap="round"/>
+                        <circle cx="20" cy="20" r="6" class="logo-center"/>
+                    </svg>
+                </div>
+                <span class="logo-text">MedIntel<span class="logo-accent">AI</span></span>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn" id="historyBtn" title="Search History">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </button>
+                <button class="nav-btn" id="bookmarkBtn" title="Saved Analyses">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </button>
+                <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">AI-Powered</span>
+                    <span class="title-line highlight">Health Intelligence</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Describe your symptoms and receive intelligent health insights powered by advanced medical knowledge base analysis.
+                </p>
+                <div class="hero-badges">
+                    <span class="badge">
+                        <span class="badge-dot"></span>
+                        Educational Purpose Only
+                    </span>
+                    <span class="badge">
+                        <span class="badge-dot emergency"></span>
+                        Emergency Detection
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Input Section -->
+        <section class="input-section">
+            <div class="input-card">
+                <div class="input-header">
+                    <h2 class="input-title">Describe Your Symptoms</h2>
+                    <span class="input-counter"><span id="charCount">0</span>/500</span>
+                </div>
+                <div class="input-wrapper">
+                    <textarea 
+                        id="symptomInput" 
+                        class="symptom-input" 
+                        placeholder="Example: I've been experiencing chest tightness and sweating for the past hour..."
+                        maxlength="500"
+                    ></textarea>
+                    <div class="input-glow"></div>
+                </div>
+                <div class="input-actions">
+                    <button class="analyze-btn" id="analyzeBtn">
+                        <span class="btn-text">Analyze Symptoms</span>
+                        <span class="btn-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </span>
+                        <div class="btn-particles"></div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Section -->
+        <section class="loading-section" id="loadingSection">
+            <div class="loading-content">
+                <div class="loading-animation">
+                    <div class="pulse-ring"></div>
+                    <div class="pulse-ring"></div>
+                    <div class="pulse-ring"></div>
+                    <div class="loading-core">
+                        <svg viewBox="0 0 40 40" fill="none">
+                            <circle cx="20" cy="20" r="15" class="core-circle"/>
+                            <path d="M20 12V28M12 20H28" class="core-cross" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <p class="loading-text">Analyzing your symptoms...</p>
+                <div class="loading-steps">
+                    <span class="step" data-step="1">Processing input</span>
+                    <span class="step" data-step="2">Matching knowledge base</span>
+                    <span class="step" data-step="3">Calculating risk scores</span>
+                    <span class="step" data-step="4">Generating insights</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Alert -->
+        <section class="emergency-alert" id="emergencyAlert">
+            <div class="alert-content">
+                <div class="alert-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                        <line x1="12" y1="9" x2="12" y2="13"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                </div>
+                <div class="alert-text">
+                    <h3 class="alert-title">Emergency Detected</h3>
+                    <p class="alert-message">Your symptoms may indicate a life-threatening condition. Call emergency services immediately.</p>
+                </div>
+                <a href="tel:911" class="emergency-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    Call 911
+                </a>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection">
+            <!-- Insight Panel -->
+            <div class="insight-panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">AI Health Insight</h3>
+                    <span class="panel-badge">AI Generated</span>
+                </div>
+                <div class="insight-content" id="insightContent">
+                    <!-- Dynamic content -->
+                </div>
+            </div>
+
+            <!-- Risk Assessment -->
+            <div class="risk-panel">
+                <h3 class="panel-title">Risk Assessment</h3>
+                <div class="risk-conditions" id="riskConditions">
+                    <!-- Dynamic risk cards -->
+                </div>
+            </div>
+
+            <!-- Matched Symptoms -->
+            <div class="symptoms-panel">
+                <h3 class="panel-title">Detected Symptoms</h3>
+                <div class="symptoms-list" id="symptomsList">
+                    <!-- Dynamic symptom tags -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Empty State -->
+        <section class="empty-state" id="emptyState">
+            <div class="empty-illustration">
+                <svg viewBox="0 0 200 200" fill="none">
+                    <circle cx="100" cy="100" r="80" class="empty-circle"/>
+                    <path d="M100 60V100L130 130" class="empty-clock" stroke-linecap="round"/>
+                    <circle cx="100" cy="100" r="8" class="empty-center"/>
+                </svg>
+            </div>
+            <h3 class="empty-title">Ready to Analyze</h3>
+            <p class="empty-text">Enter your symptoms above to receive intelligent health insights.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="disclaimer">
+                <strong>Medical Disclaimer:</strong> MedIntel AI is for educational purposes only and does not provide medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition. Never disregard professional medical advice or delay in seeking it because of something you have read on this platform. If you think you may have a medical emergency, call your doctor or emergency services immediately.
+            </p>
+            <div class="footer-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="#" id="termsLink">Terms of Use</a>
+                <a href="#" id="disclaimerLink">Full Disclaimer</a>
+            </div>
+            <p class="copyright">© 2024 MedIntel AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- History Modal -->
+    <div class="modal" id="historyModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Search History</h3>
+                <button class="modal-close" id="closeHistory">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="history-list" id="historyList">
+                    <p class="empty-message">No search history yet.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="clearHistory">Clear History</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bookmarks Modal -->
+    <div class="modal" id="bookmarkModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Saved Analyses</h3>
+                <button class="modal-close" id="closeBookmarks">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="bookmark-list" id="bookmarkList">
+                    <p class="empty-message">No saved analyses yet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disclaimer Modal -->
+    <div class="modal" id="disclaimerModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content disclaimer-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Medical Disclaimer</h3>
+                <button class="modal-close" id="closeDisclaimer">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="disclaimer-content">
+                    <div class="disclaimer-section">
+                        <h4>Not Medical Advice</h4>
+                        <p>The information provided by MedIntel AI is for general educational and informational purposes only. It is not intended to be a substitute for professional medical advice, diagnosis, or treatment.</p>
+                    </div>
+                    <div class="disclaimer-section">
+                        <h4>Seek Professional Help</h4>
+                        <p>Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition. Never disregard professional medical advice or delay in seeking it because of something you have read on this platform.</p>
+                    </div>
+                    <div class="disclaimer-section">
+                        <h4>Emergency Situations</h4>
+                        <p>If you think you may have a medical emergency, call your doctor or emergency services immediately. MedIntel AI does not recommend or endorse any specific tests, physicians, products, procedures, opinions, or other information that may be mentioned on the platform.</p>
+                    </div>
+                    <div class="disclaimer-section">
+                        <h4>Accuracy</h4>
+                        <p>While we strive to provide accurate and up-to-date information, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information provided.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" id="acceptDisclaimer">I Understand</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="static/js/app.js"></script>
+</body>
+</html>
